@@ -15,14 +15,14 @@ spec:
         app: springboot-app
     spec:
       containers:
-      - name: my-springboot-app
-        image: 308134718221.dkr.ecr.us-east-2.amazonaws.com/jenkins:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8085
-          name: http
-          protocol: TCP
-# service type loadbalancer       
+        - name: my-springboot-app
+          image: 414355940907.dkr.ecr.us-east-1.amazonaws.com/jenkins:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8085
+              name: http
+              protocol: TCP
+# service type loadbalancer
 ---
 apiVersion: v1
 kind: Service
@@ -33,10 +33,10 @@ metadata:
   name: springboot-app
 spec:
   ports:
-  - name: http
-    port: 80
-    protocol: TCP
-    targetPort: 8085
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 8085
   type: LoadBalancer
   selector:
     app: springboot-app
